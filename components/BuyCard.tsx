@@ -14,7 +14,7 @@ export function BuyCard() {
         <Card>
             <CardHeader>
                 <CardTitle>
-                    Buy tokens
+                    Purchase tokens
                 </CardTitle>
             </CardHeader>
             <CardContent>

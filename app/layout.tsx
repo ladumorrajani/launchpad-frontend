@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
-import { WalletButton } from "@/components/WalletButton"
+import { Navbar } from "@/components/Navbar"
 import { WalletProvider } from "@/components/WalletProvider"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -17,11 +17,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <html lang="en">
             <body className={`${inter.className} dark mb-32`}>
                 <WalletProvider>
-                    <div className="container mx-auto flex flex-col gap-8">
-                        <div className="flex justify-end py-4">
-                            <WalletButton />
+                    <div className="flex flex-col gap-8">
+                        <Navbar />
+                        <div className="px-8 max-w-[1024px] mx-auto">
+                            {children}
                         </div>
-                        {children}
                     </div>
                 </WalletProvider>
             </body>

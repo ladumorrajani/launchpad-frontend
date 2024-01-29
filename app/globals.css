@@ -72,7 +72,7 @@
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-[url('/TaoBG20.jpg')] bg-background text-foreground
     }
 }
 
