@@ -2,8 +2,8 @@
 
 import { useAccount, useNetwork } from "wagmi"
 import { useAccountModal, useChainModal, useConnectModal } from "@rainbow-me/rainbowkit"
-import { ReloadIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
+import { Spinner } from "@/components/Spinner"
 import { useHasMounted } from "@/hooks/useHasMounted"
 
 export function WalletButton() {
@@ -16,8 +16,7 @@ export function WalletButton() {
 
     if (!hasMounted) return (
         <Button className="w-48" disabled>
-            <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-            Connect wallet
+            <Spinner /> Connect wallet
         </Button>
     )
 
