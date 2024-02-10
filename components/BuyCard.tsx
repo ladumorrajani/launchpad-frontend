@@ -1,11 +1,11 @@
 import { Separator } from "@/components/ui/separator"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { BuyForm } from "@/components/BuyForm"
-import { ProjectEnd } from "@/components/ProjectEnd"
 import { TokenSymbol } from "@/components/TokenSymbol"
-import { ProjectStart } from "@/components/ProjectStart"
 import { TokenEthPrice } from "@/components/TokenEthPrice"
 import { ProjectHardcap } from "@/components/ProjectHardcap"
+import { ProjectDateEnd } from "@/components/ProjectDateEnd"
+import { ProjectDateStart } from "@/components/ProjectDateStart"
 import { ProjectProgressBar } from "@/components/ProjectProgressBar"
 import { ProjectPurchasedAmount } from "@/components/ProjectPurchasedAmount"
 
@@ -19,8 +19,8 @@ export function BuyCard() {
             </CardHeader>
             <CardContent>
                 <div className="flex justify-between">
-                    <span>From <ProjectStart /></span>
-                    <span>To <ProjectEnd /></span>
+                    <span>From <ProjectDateStart /></span>
+                    <span>To <ProjectDateEnd /></span>
                 </div>
                 <Separator className="my-4" />
                 <div>

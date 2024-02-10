@@ -6,7 +6,7 @@ import { UserProgressBar } from "@/components/UserProgressBar"
 import { UserClaimedTokens } from "@/components/UserClaimedTokens"
 import { ProjectReleaseDate } from "@/components/ProjectReleaseDate"
 import { UserPurchasedTokens } from "@/components/UserPurchasedTokens"
-import { ProjectVestingPeriod } from "@/components/ProjectVestingPeriod"
+import { ProjectVestingDuration } from "@/components/ProjectVestingDuration"
 
 export function ClaimCard() {
     return (
@@ -17,9 +17,9 @@ export function ClaimCard() {
                 </CardTitle>
             </CardHeader>
             <CardContent>
-                Unlock starting at <ProjectReleaseDate />
+                Unlock at <ProjectReleaseDate />
                 <Separator className="my-4" />
-                Vesting period is <ProjectVestingPeriod />
+                Vesting period is <ProjectVestingDuration /> days
                 <Separator className="my-4" />
                 <div className="flex flex-col gap-2">
                     <div className="flex justify-between">

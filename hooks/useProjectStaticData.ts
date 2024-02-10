@@ -8,11 +8,36 @@ export function useProjectStaticData() {
         contracts: [
             {
                 ...contract,
+                functionName: "name"
+            },
+            {
+                ...contract,
+                functionName: "startDate"
+            },
+            {
+                ...contract,
+                functionName: "endDate"
+            },
+            {
+                ...contract,
+                functionName: "releaseDelay"
+            },
+            {
+                ...contract,
+                functionName: "vestingDuration"
+            },
+            {
+                ...contract,
                 functionName: "token"
             },
         ],
         select: (data) => ({
-            token: data[0],
+            name: data[0],
+            startDate: data[1],
+            endDate: data[2],
+            releaseDelay: data[3],
+            vestingDuration: data[4],
+            token: data[5],
         })
     })
 }
