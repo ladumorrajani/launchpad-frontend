@@ -1,7 +1,16 @@
 "use client"
 
 import { formatEther } from "viem"
+import { useHasMounted } from "@/hooks/useHasMounted"
+import { useProjectWatchData } from "@/hooks/useProjectWatchData"
 
 export function TokenEthPrice() {
-    return formatEther(1000000000000000n)
+    const hasMounted = useHasMounted()
+    const project = useProjectWatchData()
+
+    if (!hasMounted) return <span></span>
+
+    const price = project.data?.ethPrice.result ?? 0n
+
+    return formatEther(price)
 }
