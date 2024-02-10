@@ -8,6 +8,7 @@ export function useUserWatchData() {
     return useContractReads({
         enabled: isConnected,
         scopeKey: address,
+        watch: true,
         contracts: [
             {
                 ...contract,

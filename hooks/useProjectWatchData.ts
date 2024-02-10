@@ -5,6 +5,7 @@ export function useProjectWatchData() {
     const contract = useContract()
 
     return useContractReads({
+        watch: true,
         contracts: [
             {
                 ...contract,
