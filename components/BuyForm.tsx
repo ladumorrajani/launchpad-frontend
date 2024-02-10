@@ -5,11 +5,11 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Spinner } from "@/components/Spinner"
 import { TokenSymbol } from "@/components/TokenSymbol"
-import { useHasMounted } from "@/hooks/useHasMounted"
 import { useBigintInput } from "@/hooks/useBigintInput"
 import { useTokenStaticData } from "@/hooks/useTokenStaticData"
 import { useProjectWatchData } from "@/hooks/useProjectWatchData"
 import { useProjectStaticData } from "@/hooks/useProjectStaticData"
+import { useUserWatchData } from "@/hooks/useUserWatchData"
 
 const computeTokenAmount = (amount: bigint, ethPrice: bigint, decimals: number) => {
     const tokenUnit = 10n ** BigInt(decimals)
@@ -58,18 +58,26 @@ function SubmitButton({ children }: { children: string }) {
 }
 
 function PurchasingAmount({ amount }: { amount: bigint }) {
+    const user = useUserWatchData()
     const token = useTokenStaticData()
     const projectWatch = useProjectWatchData()
     const projectStatic = useProjectStaticData()
-    const hasMounted = useHasMounted()
 
     const minTokenBuy = projectStatic.data?.minTokenBuy.result ?? 0n
     const maxTokenBuy = projectStatic.data?.maxTokenBuy.result ?? 0n
+    const hardcap = projectWatch.data?.hardcap.result ?? 0n
+    const totalPurchased = projectWatch.data?.purchased.result ?? 0n
+    const userPurchased = user.data?.purchased.result ?? 0n
     const ethPrice = projectWatch.data?.ethPrice.result ?? 0n
     const decimals = token.data?.decimals.result ?? 0
     const tokenAmount = computeTokenAmount(amount, ethPrice, decimals)
 
-    if (!hasMounted || amount === 0n || tokenAmount === 0n || decimals === 0) {
+    const loaded = user.isSuccess &&
+        token.isSuccess &&
+        projectWatch.isSuccess &&
+        projectStatic.isSuccess
+
+    if (!loaded || tokenAmount === 0n) {
         return (
             <span>
                 Purchasing 0 <TokenSymbol />
@@ -85,10 +93,18 @@ function PurchasingAmount({ amount }: { amount: bigint }) {
         )
     }
 
-    if (maxTokenBuy < tokenAmount) {
+    if (maxTokenBuy < userPurchased + tokenAmount) {
         return (
             <span className="text-red-900">
                 Purchasing {formatUnits(tokenAmount, decimals)} <TokenSymbol /> (max: {formatUnits(maxTokenBuy, decimals)})
+            </span>
+        )
+    }
+
+    if (hardcap < totalPurchased + tokenAmount) {
+        return (
+            <span className="text-red-900">
+                Purchasing {formatUnits(tokenAmount, decimals)} <TokenSymbol /> (above hardcap)
             </span>
         )
     }
