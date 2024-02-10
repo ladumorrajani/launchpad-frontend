@@ -10,7 +10,7 @@ import { ProjectVestingDuration } from "@/components/ProjectVestingDuration"
 
 export function ClaimCard() {
     return (
-        <Card>
+        <Card className="bg-black">
             <CardHeader>
                 <CardTitle>
                     Claim tokens

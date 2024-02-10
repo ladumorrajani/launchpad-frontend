@@ -11,7 +11,7 @@ import { ProjectPurchasedAmount } from "@/components/ProjectPurchasedAmount"
 
 export function BuyCard() {
     return (
-        <Card>
+        <Card className="bg-black">
             <CardHeader>
                 <CardTitle>
                     Purchase tokens
