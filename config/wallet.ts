@@ -1,55 +1,63 @@
 import "@rainbow-me/rainbowkit/styles.css"
 
 import { configureChains, createConfig } from "wagmi"
+import { mainnet } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc"
 import { getDefaultWallets, connectorsForWallets } from "@rainbow-me/rainbowkit"
 import { injectedWallet, trustWallet, rabbyWallet } from "@rainbow-me/rainbowkit/wallets"
-import { mainnet } from "wagmi/chains"
+import { testnet } from "@/config/testnet"
 
 // Taopad project id
 const projectId = "031d4ad6ce63b830ab346fb92b96f328"
 
 // chain list.
-const supported = [mainnet]
-
-// Supported chain id type.
-type SupportedChainId = typeof supported[number]["id"]
+export const chains = [mainnet, testnet]
 
 // rpc for supported chains.
-const rpcs: Record<SupportedChainId, string> = {
+const rpcs: Record<number, string> = {
     1: "https://rpc.ankr.com/eth",
+    [testnet.id]: testnet.rpcUrls.public.http[0]
 }
 
-// testnet config
-export const { chains, publicClient } = configureChains(supported, [
-    jsonRpcProvider({
-        rpc: (chain) => ({
-            http: rpcs[chain.id as SupportedChainId],
+const selectChain = (chainId: number) => {
+    return chains.filter(chain => chain.id === chainId).shift()
+}
+
+export const getWagmiConfig = (chainId: number) => {
+    const chain = selectChain(chainId)
+
+    if (chain === undefined) return undefined
+
+    const { chains, publicClient } = configureChains([chain], [
+        jsonRpcProvider({
+            rpc: (chain) => ({
+                http: rpcs[chain.id],
+            }),
         }),
-    }),
-    publicProvider(),
-])
+        publicProvider(),
+    ])
 
-const { connectors } = getDefaultWallets({
-    appName: "TaoPad launchpad",
-    projectId,
-    chains,
-})
+    const { connectors } = getDefaultWallets({
+        appName: "TaoPad launchpad",
+        projectId,
+        chains,
+    })
 
-const moreConnectors = connectorsForWallets([
-    {
-        groupName: 'More wallets',
-        wallets: [
-            injectedWallet({ chains }),
-            rabbyWallet({ chains }),
-            trustWallet({ projectId, chains }),
-        ],
-    },
-])
+    const moreConnectors = connectorsForWallets([
+        {
+            groupName: 'More wallets',
+            wallets: [
+                injectedWallet({ chains }),
+                rabbyWallet({ chains }),
+                trustWallet({ projectId, chains }),
+            ],
+        },
+    ])
 
-export const wagmiConfig = createConfig({
-    autoConnect: true,
-    connectors: () => [...connectors(), ...moreConnectors()],
-    publicClient
-})
+    return createConfig({
+        autoConnect: true,
+        connectors: () => [...connectors(), ...moreConnectors()],
+        publicClient
+    })
+}

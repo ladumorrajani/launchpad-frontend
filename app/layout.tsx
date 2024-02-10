@@ -16,14 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="en">
             <body className={`${inter.className} dark mb-32`}>
-                <WalletProvider>
-                    <div className="flex flex-col gap-8">
-                        <Navbar />
-                        <div className="px-8 max-w-[1024px] mx-auto">
-                            {children}
-                        </div>
-                    </div>
-                </WalletProvider>
+                {children}
             </body>
         </html>
     )
