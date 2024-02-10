@@ -1,10 +1,10 @@
 "use client"
 
 import { useHasMounted } from "@/hooks/useHasMounted"
-import { useProjectStaticData } from "@/hooks/useProjectStaticData"
+import { useProjectWatchData } from "@/hooks/useProjectWatchData"
 
 export function ProjectVestingDuration() {
-    const project = useProjectStaticData()
+    const project = useProjectWatchData()
     const hasMounted = useHasMounted()
 
     if (!hasMounted) return <span></span>

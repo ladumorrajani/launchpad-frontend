@@ -19,7 +19,7 @@ export function ClaimCard() {
             <CardContent>
                 Unlock at <ProjectReleaseDate />
                 <Separator className="my-4" />
-                Vesting period is <ProjectVestingDuration /> days
+                Vesting duration is <ProjectVestingDuration /> days
                 <Separator className="my-4" />
                 <div className="flex flex-col gap-2">
                     <div className="flex justify-between">

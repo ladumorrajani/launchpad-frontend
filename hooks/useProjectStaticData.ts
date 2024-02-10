@@ -24,10 +24,6 @@ export function useProjectStaticData() {
             },
             {
                 ...contract,
-                functionName: "vestingDuration"
-            },
-            {
-                ...contract,
                 functionName: "token"
             },
         ],
@@ -36,8 +32,7 @@ export function useProjectStaticData() {
             startDate: data[1],
             endDate: data[2],
             releaseDelay: data[3],
-            vestingDuration: data[4],
-            token: data[5],
+            token: data[4],
         })
     })
 }
