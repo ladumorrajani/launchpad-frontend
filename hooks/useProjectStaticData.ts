@@ -8,23 +8,31 @@ export function useProjectStaticData() {
         contracts: [
             {
                 ...contract,
-                functionName: "name"
+                functionName: "name",
             },
             {
                 ...contract,
-                functionName: "startDate"
+                functionName: "startDate",
             },
             {
                 ...contract,
-                functionName: "endDate"
+                functionName: "endDate",
             },
             {
                 ...contract,
-                functionName: "releaseDelay"
+                functionName: "releaseDelay",
             },
             {
                 ...contract,
-                functionName: "token"
+                functionName: "token",
+            },
+            {
+                ...contract,
+                functionName: "minTokenBuy",
+            },
+            {
+                ...contract,
+                functionName: "maxTokenBuy",
             },
         ],
         select: (data) => ({
@@ -33,6 +41,8 @@ export function useProjectStaticData() {
             endDate: data[2],
             releaseDelay: data[3],
             token: data[4],
+            minTokenBuy: data[5],
+            maxTokenBuy: data[6],
         })
     })
 }
