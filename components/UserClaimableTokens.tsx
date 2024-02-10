@@ -1,10 +1,24 @@
 "use client"
 
+import { formatUnits } from "viem"
+import { useHasMounted } from "@/hooks/useHasMounted"
+import { useTokenStaticData } from "@/hooks/useTokenStaticData"
+import { useUserWatchData } from "@/hooks/useUserWatchData"
 import { formatAmount } from "@/lib/utils"
 
 export function UserClaimableTokens() {
-    const decimals = 18
-    const amount = 58000000000000000000n
+    const user = useUserWatchData()
+    const token = useTokenStaticData()
+    const hasMounted = useHasMounted()
 
-    return <span>{formatAmount(amount, decimals)}</span>
+    if (!hasMounted) return <span></span>
+
+    const amount = user.data?.claimable.result ?? 0n
+    const decimals = token.data?.decimals.result ?? 0
+
+    return (
+        <span title={formatUnits(amount, decimals)}>
+            {formatAmount(amount, decimals)}
+        </span>
+    )
 }
