@@ -63,15 +63,13 @@ function PurchasingAmount({ amount }: { amount: bigint }) {
     const projectStatic = useProjectStaticData()
     const hasMounted = useHasMounted()
 
-    if (!hasMounted) return <span></span>
-
     const minTokenBuy = projectStatic.data?.minTokenBuy.result ?? 0n
     const maxTokenBuy = projectStatic.data?.maxTokenBuy.result ?? 0n
     const ethPrice = projectWatch.data?.ethPrice.result ?? 0n
     const decimals = token.data?.decimals.result ?? 0
     const tokenAmount = computeTokenAmount(amount, ethPrice, decimals)
 
-    if (amount === 0n || tokenAmount === 0n) {
+    if (!hasMounted || amount === 0n || tokenAmount === 0n || decimals === 0) {
         return (
             <span>
                 Purchasing 0 <TokenSymbol />

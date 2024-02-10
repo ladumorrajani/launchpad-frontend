@@ -11,10 +11,11 @@ export function UserClaimableTokens() {
     const token = useTokenStaticData()
     const hasMounted = useHasMounted()
 
-    if (!hasMounted) return <span></span>
-
     const amount = user.data?.claimable.result ?? 0n
     const decimals = token.data?.decimals.result ?? 0
+
+    if (!hasMounted) return <span></span>
+    if (decimals === 0) return <span></span>
 
     return (
         <span title={formatUnits(amount, decimals)}>
