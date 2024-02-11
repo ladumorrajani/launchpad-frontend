@@ -9,19 +9,27 @@ export function useProjectWatchData() {
         contracts: [
             {
                 ...contract,
-                functionName: "tokenHardCap"
+                functionName: "tokenHardCap",
             },
             {
                 ...contract,
-                functionName: "totalPurchasedAmount"
+                functionName: "totalPurchasedAmount",
             },
             {
                 ...contract,
-                functionName: "ethPricePerToken"
+                functionName: "ethPricePerToken",
             },
             {
                 ...contract,
-                functionName: "vestingDuration"
+                functionName: "vestingDuration",
+            },
+            {
+                ...contract,
+                functionName: "wlBlockNumber",
+            },
+            {
+                ...contract,
+                functionName: "wlMinBalance",
             },
         ],
         select: (data) => ({
@@ -29,6 +37,8 @@ export function useProjectWatchData() {
             purchased: data[1],
             ethPrice: data[2],
             vestingDuration: data[3],
+            wlBlockNumber: data[4],
+            wlMinBalance: data[5],
         })
     })
 }

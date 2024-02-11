@@ -9,6 +9,7 @@ import { WalletProvider } from "@/components/WalletProvider"
 import { ProjectProvider } from "@/components/ProjectProvider"
 import { ProjectDescription } from "@/components/ProjectDescription"
 import { ProjectTokenAddress } from "@/components/ProjectTokenAddress"
+import { ProjectWhitelistAlert } from "@/components/ProjectWhitelistAlert"
 
 export default function Launchpad({ params: { chain_id, address } }: { params: { chain_id: string, address: `0x${string}` } }) {
     const chainId = parseInt(chain_id)
@@ -30,6 +31,7 @@ export default function Launchpad({ params: { chain_id, address } }: { params: {
                         <p className="flex gap-2">
                             <span><TokenSymbol /> contract address:</span> <ProjectTokenAddress />
                         </p>
+                        <ProjectWhitelistAlert />
                         <div className="flex flex-col lg:flex-row gap-4">
                             <div className="flex-1">
                                 <BuyCard />
