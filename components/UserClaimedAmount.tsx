@@ -6,7 +6,7 @@ import { useTokenStaticData } from "@/hooks/useTokenStaticData"
 import { useUserWatchData } from "@/hooks/useUserWatchData"
 import { formatAmount } from "@/lib/utils"
 
-export function UserClaimedTokens() {
+export function UserClaimedAmount() {
     const user = useUserWatchData()
     const token = useTokenStaticData()
     const hasMounted = useHasMounted()

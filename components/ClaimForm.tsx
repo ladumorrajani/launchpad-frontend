@@ -4,7 +4,7 @@ import { useAccount, usePrepareContractWrite, useContractWrite, useWaitForTransa
 import { Button } from "@/components/ui/button"
 import { Spinner } from "@/components/Spinner"
 import { TokenSymbol } from "@/components/TokenSymbol"
-import { UserClaimableTokens } from "@/components/UserClaimableTokens"
+import { UserClaimableAmount } from "@/components/UserClaimableAmount"
 import { useContract } from "@/hooks/useContract"
 import { useUserWatchData } from "@/hooks/useUserWatchData"
 
@@ -49,7 +49,7 @@ export function ClaimForm() {
                 Claim
             </SubmitButton>
             <p className="muted">
-                Claimable tokens: <UserClaimableTokens /> <TokenSymbol />
+                Claimable tokens: <UserClaimableAmount /> <TokenSymbol />
             </p>
         </form>
     )

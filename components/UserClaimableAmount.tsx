@@ -6,12 +6,12 @@ import { useTokenStaticData } from "@/hooks/useTokenStaticData"
 import { useUserWatchData } from "@/hooks/useUserWatchData"
 import { formatAmount } from "@/lib/utils"
 
-export function UserPurchasedTokens() {
+export function UserClaimableAmount() {
     const user = useUserWatchData()
     const token = useTokenStaticData()
     const hasMounted = useHasMounted()
 
-    const amount = user.data?.purchased.result ?? 0n
+    const amount = user.data?.claimable.result ?? 0n
     const decimals = token.data?.decimals.result ?? 0
 
     if (!hasMounted) return <span></span>

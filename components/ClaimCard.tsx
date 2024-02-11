@@ -3,9 +3,9 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { ClaimForm } from "@/components/ClaimForm"
 import { TokenSymbol } from "@/components/TokenSymbol"
 import { UserProgressBar } from "@/components/UserProgressBar"
-import { UserClaimedTokens } from "@/components/UserClaimedTokens"
+import { UserClaimedAmount } from "@/components/UserClaimedAmount"
 import { ProjectReleaseDate } from "@/components/ProjectReleaseDate"
-import { UserPurchasedTokens } from "@/components/UserPurchasedTokens"
+import { UserPurchasedAmount } from "@/components/UserPurchasedAmount"
 import { ProjectVestingDuration } from "@/components/ProjectVestingDuration"
 
 export function ClaimCard() {
@@ -27,8 +27,8 @@ export function ClaimCard() {
                         <span className="muted">Purchased</span>
                     </div>
                     <div className="flex justify-between">
-                        <UserClaimedTokens />
-                        <span><UserPurchasedTokens /> <TokenSymbol /></span>
+                        <UserClaimedAmount />
+                        <span><UserPurchasedAmount /> <TokenSymbol /></span>
                     </div>
                     <UserProgressBar />
                 </div>
