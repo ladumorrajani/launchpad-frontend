@@ -2,7 +2,7 @@
 
 import { useHasMounted } from "@/hooks/useHasMounted"
 import { useProjectStaticData } from "@/hooks/useProjectStaticData"
-import { formatTimestamp } from "@/utils/formatTimestamp"
+import { formatTimestamp } from "@/lib/utils"
 
 export function ProjectDateStart() {
     const project = useProjectStaticData()
