@@ -32,12 +32,12 @@ export function UserPurchasingAmount({ amount }: { amount: bigint }) {
 
     const loaded = user.isSuccess
         && token.isSuccess
-        && proofWatch.isSuccess
         && projectWatch.isSuccess
         && projectStatic.isSuccess
+        && (wlBlockNumber === 0n || proofWatch.isSuccess)
 
     if (!loaded) {
-        return "-"
+        return <span>-</span>
     }
 
     if (wlBlockNumber > 0 && proof.length === 0) {

@@ -41,10 +41,10 @@ const useBuy = (amount: bigint, reset: () => void) => {
     const enabled = isConnected
         && user.isSuccess
         && token.isSuccess
-        && proofWatch.isSuccess
         && projectWatch.isSuccess
         && projectStatic.isSuccess
         && balanceWatch.isSuccess
+        && (wlBlockNumber === 0n || proofWatch.isSuccess)
         && amount > 0
         && tokenAmount > 0
         && balance >= amount
