@@ -7,6 +7,7 @@ import { ProjectName } from "@/components/ProjectName"
 import { TokenSymbol } from "@/components/TokenSymbol"
 import { WalletProvider } from "@/components/WalletProvider"
 import { ProjectProvider } from "@/components/ProjectProvider"
+import { ProjectCoverImage } from "@/components/ProjectCoverImage"
 import { ReactQueryProvider } from "@/components/ReactQueryProvider"
 import { ProjectDescription } from "@/components/ProjectDescription"
 import { ProjectTokenAddress } from "@/components/ProjectTokenAddress"
@@ -26,6 +27,7 @@ export default function Launchpad({ params: { chain_id, address } }: { params: {
                     <div className="flex flex-col gap-8">
                         <Navbar />
                         <div className="flex flex-col gap-8 px-8 max-w-[1024px] mx-auto">
+                            <ProjectCoverImage />
                             <h1><ProjectName /></h1>
                             <p>
                                 <ProjectDescription />
