@@ -22,9 +22,10 @@ function useClaim() {
 
     const prepare = usePrepareContractWrite({
         enabled,
-        scopeKey: address,
         ...contract,
+        account: address,
         functionName: "claimTokens",
+        scopeKey: address + claimable.toString(), // cache mystery?
     })
 
     const action = useContractWrite(prepare.config)
@@ -36,14 +37,14 @@ function useClaim() {
 
 export function ClaimForm() {
     const { prepare, action, wait } = useClaim()
-
+    console.log(prepare.status)
     const loading = prepare.isLoading || action.isLoading || wait.isLoading
     const disabled = loading || !prepare.isSuccess || !action.write
 
     return (
         <form className="flex flex-col gap-4" onSubmit={e => {
             e.preventDefault()
-            alert("claim")
+            action.write?.()
         }}>
             <SubmitButton loading={loading} disabled={disabled}>
                 Claim
