@@ -1,5 +1,9 @@
 "use client"
 
+import Link from "next/link"
+
 export function ProjectDescription() {
-    return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer egestas velit eget metus tincidunt sodales. Sed a elementum enim. Sed gravida dui sit amet felis hendrerit maximus. In tincidunt, mi sed tempor imperdiet, eros nulla condimentum est, sed lacinia neque dolor vel odio. Fusce turpis ex, ullamcorper at gravida at, rhoncus luctus turpis. Donec rutrum leo viverra semper rutrum. Etiam eros nulla, sodales ac dictum in, mattis a leo. Vivamus nibh nisi, commodo sed tellus id, fermentum pellentesque neque."
+    return (
+        <span>TaoBank is a decentralized borrowing protocol that allows you to draw interest-free loans against $wTAO used as collateral. Loans are facilitated in $taoUSD (a low-volatility stablecoin soft-pegged to the US dollar) and need to maintain an overcollateralized ratio. TaoBank as a protocol is non-custodial, immutable, and governance-free. Learn more in our <Link href="https://docs.taobank.ai/" target="_blank">documentation</Link>.</span>
+    )
 }
