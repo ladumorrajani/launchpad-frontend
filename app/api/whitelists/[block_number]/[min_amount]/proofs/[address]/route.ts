@@ -7,6 +7,8 @@ type Params = {
     address: string
 }
 
+export const dynamic = "force-dynamic"
+
 export async function GET(request: Request, { params: { block_number, min_amount, address } }: { params: Params }) {
     const blockNumber = BigInt(block_number)
     const minAmount = BigInt(min_amount)
