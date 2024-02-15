@@ -37,7 +37,7 @@ function useClaim() {
 
 export function ClaimForm() {
     const { prepare, action, wait } = useClaim()
-    console.log(prepare.status)
+
     const loading = prepare.isLoading || action.isLoading || wait.isLoading
     const disabled = loading || !prepare.isSuccess || !action.write
 

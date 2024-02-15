@@ -75,7 +75,7 @@ export function UserPurchasingAmount({ amount }: { amount: bigint }) {
     if (maxTokenBuy < tokenAmount + userPurchased) {
         return (
             <span className="text-red-900">
-                Purchasing {formatUnits(tokenAmount, decimals)} <TokenSymbol /> (max: {formatUnits(maxTokenBuy, decimals)})
+                Purchasing {formatUnits(tokenAmount, decimals)} <TokenSymbol /> (above max purchase: {formatUnits(maxTokenBuy, decimals)})
             </span>
         )
     }
