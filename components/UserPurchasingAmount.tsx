@@ -25,6 +25,8 @@ export function UserPurchasingAmount({ amount }: { amount: bigint }) {
     const hardcap = projectWatch.data?.hardcap.result ?? 0n
     const totalPurchased = projectWatch.data?.purchased.result ?? 0n
     const wlBlockNumber = projectWatch.data?.wlBlockNumber.result ?? 0n
+    const isStarted = projectWatch.data?.isStarted.result ?? false
+    const isEnded = projectWatch.data?.isEnded.result ?? true
     const userPurchased = user.data?.purchased.result ?? 0n
     const ethPrice = projectWatch.data?.ethPrice.result ?? 0n
     const decimals = token.data?.decimals.result ?? 0
@@ -44,6 +46,22 @@ export function UserPurchasingAmount({ amount }: { amount: bigint }) {
         return (
             <span className="text-red-900">
                 Not whitelisted
+            </span>
+        )
+    }
+
+    if (!isStarted) {
+        return (
+            <span className="text-red-900">
+                Sale not started
+            </span>
+        )
+    }
+
+    if (isEnded) {
+        return (
+            <span className="text-red-900">
+                Sale ended
             </span>
         )
     }

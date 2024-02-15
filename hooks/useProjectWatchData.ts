@@ -31,6 +31,14 @@ export function useProjectWatchData() {
                 ...contract,
                 functionName: "wlMinBalance",
             },
+            {
+                ...contract,
+                functionName: "isStarted",
+            },
+            {
+                ...contract,
+                functionName: "isEnded",
+            },
         ],
         select: (data) => ({
             hardcap: data[0],
@@ -39,6 +47,8 @@ export function useProjectWatchData() {
             vestingDuration: data[3],
             wlBlockNumber: data[4],
             wlMinBalance: data[5],
+            isStarted: data[6],
+            isEnded: data[7],
         })
     })
 }

@@ -33,6 +33,8 @@ const useBuy = (amount: bigint, reset: () => void) => {
     const hardcap = projectWatch.data?.hardcap.result ?? 0n
     const totalPurchased = projectWatch.data?.purchased.result ?? 0n
     const wlBlockNumber = projectWatch.data?.wlBlockNumber.result ?? 0n
+    const isStarted = projectWatch.data?.isStarted.result ?? false
+    const isEnded = projectWatch.data?.isEnded.result ?? true
     const userPurchased = user.data?.purchased.result ?? 0n
     const ethPrice = projectWatch.data?.ethPrice.result ?? 0n
     const decimals = token.data?.decimals.result ?? 0
@@ -44,6 +46,7 @@ const useBuy = (amount: bigint, reset: () => void) => {
         && projectWatch.isSuccess
         && projectStatic.isSuccess
         && balanceWatch.isSuccess
+        && isStarted && !isEnded
         && (wlBlockNumber === 0n || proofWatch.isSuccess)
         && amount > 0
         && tokenAmount > 0
