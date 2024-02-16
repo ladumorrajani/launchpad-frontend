@@ -29,9 +29,7 @@ export default function Launchpad({ params: { chain_id, address } }: { params: {
                         <div className="flex flex-col gap-8 px-8 max-w-[1024px] mx-auto">
                             <ProjectCoverImage />
                             <h1><ProjectName /></h1>
-                            <p>
-                                <ProjectDescription />
-                            </p>
+                            <ProjectDescription />
                             <p className="flex gap-2">
                                 <span><TokenSymbol /> contract address:</span> <ProjectTokenAddress />
                             </p>
