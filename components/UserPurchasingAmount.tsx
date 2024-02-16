@@ -3,6 +3,7 @@
 import { formatUnits } from "viem"
 import { TokenSymbol } from "@/components/TokenSymbol"
 import { useUserProof } from "@/hooks/useUserProof"
+import { useHasMounted } from "@/hooks/useHasMounted"
 import { useWatchBalance } from "@/hooks/useWatchBalance"
 import { useUserWatchData } from "@/hooks/useUserWatchData"
 import { useTokenStaticData } from "@/hooks/useTokenStaticData"
@@ -17,6 +18,7 @@ export function UserPurchasingAmount({ amount }: { amount: bigint }) {
     const balanceWatch = useWatchBalance()
     const projectWatch = useProjectWatchData()
     const projectStatic = useProjectStaticData()
+    const hasMounted = useHasMounted()
 
     const proof = proofWatch.data?.proof ?? []
     const balance = balanceWatch.data?.value ?? 0n
@@ -38,7 +40,7 @@ export function UserPurchasingAmount({ amount }: { amount: bigint }) {
         && projectStatic.isSuccess
         && (wlBlockNumber === 0n || proofWatch.isSuccess)
 
-    if (!loaded) {
+    if (!hasMounted || !loaded) {
         return <span>-</span>
     }
 
