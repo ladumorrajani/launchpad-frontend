@@ -81,6 +81,10 @@
         @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl
     }
 
+    a {
+        @apply font-medium text-primary underline underline-offset-4;
+    }
+
     .muted {
         @apply text-sm text-muted-foreground
     }
