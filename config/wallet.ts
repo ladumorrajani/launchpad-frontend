@@ -16,7 +16,7 @@ export const chains = [mainnet, testnet]
 
 // rpc for supported chains.
 const rpcs: Record<number, string> = {
-    1: "https://eth-mainnet.g.alchemy.com/v2/oW_Y3js1QPWpFXnCIQm-z56vysAdoppY",
+    [mainnet.id]: "https://eth-mainnet.g.alchemy.com/v2/oW_Y3js1QPWpFXnCIQm-z56vysAdoppY",
     [testnet.id]: testnet.rpcUrls.public.http[0]
 }
 
@@ -31,9 +31,7 @@ export const getWagmiConfig = (chainId: number) => {
 
     const { chains, publicClient } = configureChains([chain], [
         jsonRpcProvider({
-            rpc: (chain) => ({
-                http: rpcs[chain.id],
-            }),
+            rpc: ({ id }) => ({ http: rpcs[id] })
         }),
         publicProvider(),
     ])
