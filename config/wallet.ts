@@ -8,15 +8,20 @@ import { getDefaultWallets, connectorsForWallets } from "@rainbow-me/rainbowkit"
 import { injectedWallet, trustWallet, rabbyWallet } from "@rainbow-me/rainbowkit/wallets"
 import { testnet } from "@/config/testnet"
 
-// Taopad project id
+// Taopad project id.
 const projectId = "031d4ad6ce63b830ab346fb92b96f328"
 
 // chain list.
 export const chains = [mainnet, testnet]
 
+// check if we are in dev env.
+const isDev = process.env.NODE_ENV === "development"
+
 // rpc for supported chains.
 const rpcs: Record<number, string> = {
-    [mainnet.id]: "https://eth-mainnet.g.alchemy.com/v2/oW_Y3js1QPWpFXnCIQm-z56vysAdoppY",
+    [mainnet.id]: isDev
+        ? "https://rpc.ankr.com/eth"
+        : "https://eth-mainnet.g.alchemy.com/v2/oW_Y3js1QPWpFXnCIQm-z56vysAdoppY",
     [testnet.id]: testnet.rpcUrls.public.http[0]
 }
 
