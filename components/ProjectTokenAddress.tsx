@@ -1,5 +1,6 @@
 "use client"
 
+import { Address } from "@/components/Address"
 import { useProjectStaticData } from "@/hooks/useProjectStaticData"
 
 export function ProjectTokenAddress() {
@@ -7,12 +8,5 @@ export function ProjectTokenAddress() {
 
     const token = project.data?.token.result ?? ""
 
-    return (
-        <input
-            type="text"
-            className="bg-transparent text-white w-full border-0 flex-1 focus:outline-none focus:ring-0"
-            value={token}
-            readOnly
-        />
-    )
+    return <Address>{token}</Address>
 }
