@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { useContract } from "@/hooks/useContract"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 
 export function ProjectCoverImage() {
     const { chainId, address } = useContract()
@@ -28,9 +29,8 @@ export function ProjectCoverImage() {
     }
 
     return (
-        <Image src={url} alt="taobank cover" width="1962" height="482" style={{
-            width: '100%',
-            height: 'auto',
-        }} />
+        <AspectRatio ratio={16 / 4}>
+            <Image src={url} alt="project cover" fill priority={true} />
+        </AspectRatio>
     )
 }
