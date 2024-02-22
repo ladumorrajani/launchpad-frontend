@@ -26,7 +26,7 @@ export default function Launchpad({ params: { chain_id, address } }: { params: {
                 <ProjectProvider chainId={chainId} address={address}>
                     <div className="flex flex-col gap-8">
                         <Navbar />
-                        <div className="flex flex-col gap-8 px-8 max-w-[1024px] mx-auto">
+                        <div className="flex flex-col gap-8 px-8 max-w-[1024px] w-full mx-auto">
                             <ProjectCoverImage />
                             <h1><ProjectName /></h1>
                             <ProjectDescription />
