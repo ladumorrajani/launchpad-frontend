@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { WalletProvider } from "@/components/WalletProvider";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import Link from "next/link";
 
 export default function Home() {
@@ -9,7 +11,7 @@ export default function Home() {
 				<Navbar />
 				<div className="flex flex-col gap-8 px-8 max-w-[1024px] w-full mx-auto">
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-						<div className="border p-7 bg-black shadow-lg rounded-lg">
+						<Card className="border p-7 bg-black shadow-lg rounded-lg">
 							<h2 className="text-3xl text-white font-bold mb-3">
 								TBANK Seed
 							</h2>
@@ -29,15 +31,20 @@ export default function Home() {
 									0x95CcffaE3Eb8767D4a941Ec43280961dde89F4dE
 								</span>
 							</p>
-							<Link
-								href="/projects/1/0x116Bb71512f8E9f76Df2840C7CED2B5Ee06f9C85"
-								target="_blank"
-								className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-9 px-4 py-2 bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 no-underline w-full"
+							<Button
+								variant="secondary"
+								className="w-full no-underline"
+								asChild
 							>
-								TBANK Seed round (1000+ TPAD)
-							</Link>
-						</div>
-						<div className="border p-7 bg-black shadow-lg rounded-lg">
+								<Link
+									href="/projects/1/0x116Bb71512f8E9f76Df2840C7CED2B5Ee06f9C85"
+									target="_blank"
+								>
+									TBANK Seed round (1000+ TPAD)
+								</Link>
+							</Button>
+						</Card>
+						<Card className="border p-7 bg-black shadow-lg rounded-lg">
 							<h2 className="text-3xl text-white font-bold mb-3">
 								TPad Round
 							</h2>
@@ -57,14 +64,19 @@ export default function Home() {
 									0x95CcffaE3Eb8767D4a941Ec43280961dde89F4dE
 								</span>
 							</p>
-							<Link
-								href="/projects/1/0x481dacbf63363d142d761C6DE51da05F10A2b70D"
-								target="_blank"
-								className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-9 px-4 py-2 bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 no-underline w-full"
+							<Button
+								variant="secondary"
+								className="w-full no-underline"
+								asChild
 							>
-								TBANK Tpad round (50+ TPAD)
-							</Link>
-						</div>
+								<Link
+									href="/projects/1/0x481dacbf63363d142d761C6DE51da05F10A2b70D"
+									target="_blank"
+								>
+									TBANK Tpad round (50+ TPAD)
+								</Link>
+							</Button>
+						</Card>
 					</div>
 				</div>
 			</div>
